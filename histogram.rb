@@ -1,11 +1,20 @@
-puts "Text Please"
+def substrings(string, array)
+	answer = {}
+
+	array.each do |word|
+		string.downcase.split(" ").each do |string_word|
+			if string_word.include? word
+				answer[word] = answer[word].to_i + 1
+			end
+		end
+	end
+
+	puts answer
+end
+
+dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
+
+puts "Type in your string, please:"
 text = gets.chomp
-words = text.split
 
-frequencies = Hash.new(0)
-words.each { |word| frequencies[word] += 1 }
-
-frequencies = frequencies.sort_by { |k, v| v }
-frequencies.reverse!
-
-frequencies.each { |word, frequency| puts word + " " + frequency.to_s }
+substrings(text, dictionary)
